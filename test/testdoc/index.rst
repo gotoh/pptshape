@@ -11,6 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+.. For this image, use "#1" or "#1.1" for shapename with PowerPoint 2007 
+
 .. ppt-shape:: abc.png
    :pptfilename: testppt.pptx
    :shapename: shape-title
