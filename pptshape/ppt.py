@@ -13,6 +13,7 @@ class PPTShape:
     VER_PP2007 = '12.0'
 
     def __init__(self, filename):
+        self.ppt = None
         self.ppt = win32com.client.gencache.EnsureDispatch("PowerPoint.Application") 
         self.appver = map(int, self.ppt.Version.split('.'))
         # [12, 0] for PP2007
@@ -21,9 +22,12 @@ class PPTShape:
         if self.old:
             self.ppt.Visible = 1 # need to open with PP2007
         self.presentation = self.ppt.Presentations.Open(self.filename)
+    def __del__(self):
+        self.quit()
 
     def quit(self):
-        self.ppt.Quit()
+        if self.ppt:
+            self.ppt.Quit()
         self.ppt = None
 
     def shapes(self):
