@@ -19,9 +19,9 @@ class PPTShape:
         # [12, 0] for PP2007
         self.old = self.appver <= [12, 0]
         self.filename = filename
-        if self.old:
-            self.ppt.Visible = 1 # need to open with PP2007
-        self.presentation = self.ppt.Presentations.Open(self.filename)
+        self.presentation = self.ppt.Presentations.Open(self.filename,
+                                                        WithWindow=0)
+
     def __del__(self):
         self.quit()
 
